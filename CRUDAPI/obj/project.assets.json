@@ -1,0 +1,141 @@
+{
+  "version": 3,
+  "targets": {
+    "net8.0": {
+      "DtosLayer/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/DtosLayer.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DtosLayer.dll": {}
+        }
+      },
+      "RepositoriesLayer/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "DtosLayer": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/RepositoriesLayer.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/RepositoriesLayer.dll": {}
+        }
+      },
+      "ServiceLayer/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "DtosLayer": "1.0.0",
+          "RepositoriesLayer": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/ServiceLayer.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ServiceLayer.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "DtosLayer/1.0.0": {
+      "type": "project",
+      "path": "../DtosLayer/DtosLayer.csproj",
+      "msbuildProject": "../DtosLayer/DtosLayer.csproj"
+    },
+    "RepositoriesLayer/1.0.0": {
+      "type": "project",
+      "path": "../Repositories/RepositoriesLayer.csproj",
+      "msbuildProject": "../Repositories/RepositoriesLayer.csproj"
+    },
+    "ServiceLayer/1.0.0": {
+      "type": "project",
+      "path": "../ServiceLayer/ServiceLayer.csproj",
+      "msbuildProject": "../ServiceLayer/ServiceLayer.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net8.0": [
+      "DtosLayer >= 1.0.0",
+      "ServiceLayer >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\USER\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\projects\\CRUDAPI\\CRUDAPI\\CRUDAPI.csproj",
+      "projectName": "CRUDAPI",
+      "projectPath": "C:\\projects\\CRUDAPI\\CRUDAPI\\CRUDAPI.csproj",
+      "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
+      "outputPath": "C:\\projects\\CRUDAPI\\CRUDAPI\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net8.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "projectReferences": {
+            "C:\\projects\\CRUDAPI\\DtosLayer\\DtosLayer.csproj": {
+              "projectPath": "C:\\projects\\CRUDAPI\\DtosLayer\\DtosLayer.csproj"
+            },
+            "C:\\projects\\CRUDAPI\\ServiceLayer\\ServiceLayer.csproj": {
+              "projectPath": "C:\\projects\\CRUDAPI\\ServiceLayer\\ServiceLayer.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      }
+    },
+    "frameworks": {
+      "net8.0": {
+        "targetAlias": "net8.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.AspNetCore.App": {
+            "privateAssets": "none"
+          },
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

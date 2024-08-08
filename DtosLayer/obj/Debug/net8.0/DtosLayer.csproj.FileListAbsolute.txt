@@ -1,0 +1,12 @@
+C:\projects\CRUDAPI\DtosLayer\bin\Debug\net8.0\DtosLayer.deps.json
+C:\projects\CRUDAPI\DtosLayer\bin\Debug\net8.0\DtosLayer.dll
+C:\projects\CRUDAPI\DtosLayer\bin\Debug\net8.0\DtosLayer.pdb
+C:\projects\CRUDAPI\DtosLayer\obj\Debug\net8.0\DtosLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\projects\CRUDAPI\DtosLayer\obj\Debug\net8.0\DtosLayer.AssemblyInfoInputs.cache
+C:\projects\CRUDAPI\DtosLayer\obj\Debug\net8.0\DtosLayer.AssemblyInfo.cs
+C:\projects\CRUDAPI\DtosLayer\obj\Debug\net8.0\DtosLayer.csproj.CoreCompileInputs.cache
+C:\projects\CRUDAPI\DtosLayer\obj\Debug\net8.0\DtosLayer.sourcelink.json
+C:\projects\CRUDAPI\DtosLayer\obj\Debug\net8.0\DtosLayer.dll
+C:\projects\CRUDAPI\DtosLayer\obj\Debug\net8.0\refint\DtosLayer.dll
+C:\projects\CRUDAPI\DtosLayer\obj\Debug\net8.0\DtosLayer.pdb
+C:\projects\CRUDAPI\DtosLayer\obj\Debug\net8.0\ref\DtosLayer.dll

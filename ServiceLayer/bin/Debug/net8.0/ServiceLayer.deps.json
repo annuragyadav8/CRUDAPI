@@ -1,0 +1,50 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "ServiceLayer/1.0.0": {
+        "dependencies": {
+          "DtosLayer": "1.0.0",
+          "RepositoriesLayer": "1.0.0"
+        },
+        "runtime": {
+          "ServiceLayer.dll": {}
+        }
+      },
+      "DtosLayer/1.0.0": {
+        "runtime": {
+          "DtosLayer.dll": {}
+        }
+      },
+      "RepositoriesLayer/1.0.0": {
+        "dependencies": {
+          "DtosLayer": "1.0.0"
+        },
+        "runtime": {
+          "RepositoriesLayer.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ServiceLayer/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DtosLayer/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "RepositoriesLayer/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
