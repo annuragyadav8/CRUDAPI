@@ -1,0 +1,10 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/CRUDAPI/FileContentIndex/7e4818b7-f4fa-4f5a-94ad-e02c010db439.vsidx
+/.vs/CRUDAPI/v17/.suo
+/.vs/CRUDAPI/v17/DocumentLayout.json
+/CRUDAPI/obj/Debug/net8.0/ref/CRUDAPI.dll
+/CRUDAPI/obj/Debug/net8.0/refint/CRUDAPI.dll
+/CRUDAPI/obj/Debug/net8.0/apphost.exe

@@ -49,5 +49,12 @@ namespace CRUDAPI.Controllers
         {
             return Ok(_employeeService.DeleteEmployee(id));
         }
+
+        [HttpGet]
+        [Route("GetEmployeeData/{id}")]
+        public ActionResult GetEmployeeData(int id)
+        {
+            return Ok(_employeeService.GetEmployee(id));
+        }
     }
 }
