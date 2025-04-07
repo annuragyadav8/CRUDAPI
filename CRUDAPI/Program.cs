@@ -3,21 +3,26 @@ using ServiceLayer.Employee;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+var connectionString = builder.Configuration.GetConnectionString("DBsettingConnection");
 
 builder.Services.AddControllers();
 
+builder.Services.AddScoped<IEmployeeRepository>(provider => new EmployeeRepository(connectionString));
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
-builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+    });
+});
+
 
 
 var app = builder.Build();
-
-// Configure the HTTP request pipeline.
+app.UseCors("AllowAll");
 
 app.UseHttpsRedirection();
-
-app.UseAuthorization();
 
 app.MapControllers();
 
