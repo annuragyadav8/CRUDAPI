@@ -1,12 +1,45 @@
-﻿using DtosLayer;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using DtosLayer;
 
 namespace RepositoriesLayer.Employee
 {
     public class EmployeeRepository : IEmployeeRepository
     {
+        private readonly string _connectionString;
+
+        public EmployeeRepository(string connectionString)
+        {
+            _connectionString = connectionString;
+        }
         public List<EmployeeClass> GetEmployees()
         {
-            return GetEmployeeObject();
+            List<EmployeeClass> employees = new List<EmployeeClass>();
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("GetEmployees", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    EmployeeClass emp = new EmployeeClass()
+                    {
+                        Id = Convert.ToInt32(reader["Id"]),
+                        Name = reader["Name"].ToString(),
+                        Address = reader["Address"].ToString(),
+                        Department = reader["Department"].ToString()
+                    };
+                    employees.Add(emp);
+                }
+            }
+
+            return employees;
         }
 
         public EmployeeClass GetEmployee(int id)
@@ -37,22 +70,39 @@ namespace RepositoriesLayer.Employee
 
         public List<EmployeeClass> AddEmployee(EmployeeClass employee)
         {
-            List<EmployeeClass> employees = GetEmployeeObject();
-            employees.Add(employee);
+            List<EmployeeClass> employees = new List<EmployeeClass>();
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("AddEmployee", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@Name", employee.Name);
+                cmd.Parameters.AddWithValue("@Address", employee.Address);
+                cmd.Parameters.AddWithValue("@Department", employee.Department);
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+
             return employees;
         }
 
         public List<EmployeeClass> UpdateEmployee(EmployeeClass employee)
         {
-            List<EmployeeClass> employees = GetEmployeeObject();
-            foreach (EmployeeClass emp in employees)
+            List<EmployeeClass> employees = new List<EmployeeClass>();
+            using (SqlConnection conn = new SqlConnection(_connectionString))
             {
-                if (emp.Id == employee.Id)
-                {
-                    emp.Name = employee.Name;
-                    emp.Address = employee.Address;
-                    emp.Department = employee.Department;
-                }
+                SqlCommand cmd = new SqlCommand("UpdateEmployee", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@Id", employee.Id);
+                cmd.Parameters.AddWithValue("@Name", employee.Name);
+                cmd.Parameters.AddWithValue("@Address", employee.Address);
+                cmd.Parameters.AddWithValue("@Department", employee.Department);
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
             }
 
             return employees;
@@ -60,21 +110,17 @@ namespace RepositoriesLayer.Employee
 
         public List<EmployeeClass> DeleteEmployee(int id)
         {
-            List<EmployeeClass> employees = GetEmployeeObject();
-            EmployeeClass employeeToRemove = null;
-            foreach (EmployeeClass emp in employees)
+            List<EmployeeClass> employees = new List<EmployeeClass>();
+            using (SqlConnection conn = new SqlConnection(_connectionString))
             {
-                if (emp.Id == id)
-                {
-                    employeeToRemove = emp;
-                    break;
-                }
-            }
-            if (employeeToRemove != null)
-            {
-                employees.Remove(employeeToRemove);
-            }
+                SqlCommand cmd = new SqlCommand("DeleteEmployee", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
 
+                cmd.Parameters.AddWithValue("@Id", id);
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
             return employees;
         }
     }
