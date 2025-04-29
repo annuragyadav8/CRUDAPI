@@ -44,29 +44,34 @@ namespace RepositoriesLayer.Employee
 
         public EmployeeClass GetEmployee(int id)
         {
-            List<EmployeeClass> employees = GetEmployeeObject();
-            foreach (EmployeeClass employee in employees)
+            EmployeeClass employee = null;
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
             {
-                if (employee.Id == id)
+                SqlCommand cmd = new SqlCommand("GetEmployee", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@Id", id);
+
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
                 {
-                    return employee;
+                    employee = new EmployeeClass()
+                    {
+                        Id = Convert.ToInt32(reader["Id"]),
+                        Name = reader["Name"].ToString(),
+                        Address = reader["Address"].ToString(),
+                        Department = reader["Department"].ToString()
+                    };
                 }
             }
 
-            return new EmployeeClass();
+            return employee;
         }
-        public List<EmployeeClass> GetEmployeeObject()
-        {
-            List<EmployeeClass> employees = new List<EmployeeClass>()
-            {
-                new EmployeeClass() { Id = 1, Name = "Tom", Address = "Thane", Department = "HR"},
-                new EmployeeClass() { Id = 2, Name = "Sumit", Address = "Mulund", Department = "Engeering"},
-                new EmployeeClass() { Id = 3, Name = "Amit", Address = "Nasik", Department = "Marketing"},
-                new EmployeeClass() { Id = 4, Name = "Aman", Address = "Pune", Department = "Marketing"}
-            };
 
-            return employees;
-        }
+
 
         public List<EmployeeClass> AddEmployee(EmployeeClass employee)
         {
